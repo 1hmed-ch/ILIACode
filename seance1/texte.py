@@ -21,15 +21,13 @@ def lire(chemin, regle="utf-8"):
         octets = f.read()
     # 2. décoder ces octets avec la règle reçue, puis renvoyer le texte
     return octets.decode(regle)
-    raise NotImplementedError("bloc Lire à compléter")
 
 
 def reparer(texte):
     """Bloc Réparer. Corrige les mojibakes, laisse intact un texte sain."""
     # une ligne, ftfy.fix_text(texte, normalization=None)
-    return ftfy.fix_text(texte, normalization=None)
     # normalization=None, car normaliser est l'étape suivante, pas celle-ci
-    raise NotImplementedError("bloc Réparer à compléter")
+    return ftfy.fix_text(texte, normalization=None)
 
 
 def normaliser(texte, forme="NFKC"):
@@ -43,7 +41,6 @@ def normaliser(texte, forme="NFKC"):
     # 4. convertir les chiffres arabes avec translate et CHIFFRES_ARABES
     texte = texte.translate(CHIFFRES_ARABES)
     return texte
-    raise NotImplementedError("bloc Normaliser à compléter")
 
 
 def tokeniser(texte):
@@ -56,16 +53,14 @@ def tokeniser(texte):
         tokens.append(token)
         if "_" in token and re.fullmatch(r"\w+", token):
             tokens.extend(c for c in token.split("_") if c)
-    return tokens
     # return re.findall(MOTIF, texte)
-    raise NotImplementedError("bloc Tokeniser à compléter")
+    return tokens
 
 
 def mesurer(tokens):
     """Bloc Mesurer. Fréquence de chaque token distinct."""
     # une ligne, Counter(tokens)
     return Counter(tokens)
-    raise NotImplementedError("bloc Mesurer à compléter")
 
 
 def chaine(chemin, regle="utf-8"):
